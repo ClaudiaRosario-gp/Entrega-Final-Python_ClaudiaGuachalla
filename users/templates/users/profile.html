@@ -1,0 +1,20 @@
+{% extends 'miaplicacion/padre.html' %}
+
+{% block content %}
+  <div class="container">
+    <h2>Perfil de Usuario</h2>
+    <form method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+      <div class="row">
+        <div class="col-md-8">
+          {{ u_form.as_p }}
+          {{ p_form.as_p }}
+          <button type="submit" class="btn btn-primary">Actualizar</button>
+        </div>
+        <div class="col-md-4">
+          <img src="{{ user.profile.image.url }}" class="img-thumbnail" alt="Profile Image">
+        </div>
+      </div>
+    </form>
+  </div>
+{% endblock %}
