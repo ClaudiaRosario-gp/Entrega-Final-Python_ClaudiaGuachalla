@@ -3,36 +3,50 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Lista de Blogs</title>
 </head>
 <body>
-{% extends 'miaplicacion/padre.html' %}
+ 
+    {% extends 'miaplicacion/padre.html' %}
+    {% load static %}
+    {% block contenidoQueCambia %}
+    
+ 
+    <section class="about-section text-center" id="about">
+      <div class="container px-4 px-lg-5">
+          <div class="row gx-4 gx-lg-5 justify-content-center">
+                  <h1 class="text-white mb-4">LISTA DE BLOGS</h1>
+                    <section class="contact-section bg-black">
+                      <div class="container px-4 px-lg-5">
+                          <div class="row gx-4 gx-lg-5">
+                              
+                                  <div class="card py-4 h-100">
+                                      
+                                           
+      <div>
+        {% for blog in blogs %}
+          <div>
+            <!-- Mostrar imagen miniatura si existe -->
+            <h2>{{ blog.titulo }}</h2>
+            {% if blog.imagen %}
+              <img src="{{ blog.imagen.url }}" alt="Imagen de {{ blog.titulo }}" style="width: 150px; height: auto;">
 
-  {% block content %}
-    <h1>Listado de Blogs</h1>
-    <div>
-      {% for blog in blogs %}
-        <div>
-          <!-- Mostrar imagen miniatura si existe -->
-          <h2>{{ blog.titulo }}</h2>
-          {% if blog.imagen %}
-            <img src="{{ blog.imagen.url }}" alt="Imagen de {{ blog.titulo }}" style="width: 150px; height: auto;">
+            {% endif %}
             
-          {% endif %}
-                
-          <p>{{ blog.subtitulo }}</p>
-          <a href="{% url 'blog_detail' blog.pk %}">Leer más</a>
-          
-          {% if request.user == blog.autor %}
+            <p>{{ blog.subtitulo }}</p>
+            <p><strong>Fecha de publicación:</strong> {{ blog.fecha|date:"d M Y" }}</p>
+            <a href="{% url 'blog_detail' blog.pk %}">Leer más</a>
             
-            <a href="{% url 'blog_edit' blog.pk %}">Editar</a>
-            <a href="{% url 'blog_delete' blog.pk %}">Eliminar</a>
+            {% if request.user == blog.autor %}
+            
+              <a href="{% url 'blog_edit' blog.pk %}">Editar</a>
+              <a href="{% url 'blog_delete' blog.pk %}">Eliminar</a>
 
-          {% endif %}
-        </div>
-      {% empty %}
-        <p>No hay blogs aún.</p>
-      {% endfor %}
+            {% endif %}
+          </div>
+        {% empty %}
+          <p>No hay blogs aún.</p>
+       {% endfor %}
     </div>
   
     <!-- Agregar botón para crear un nuevo blog -->
@@ -50,13 +64,13 @@
           <a href="?page={{ page_obj.previous_page_number }}">anterior</a>
         {% endif %}
   
-        {% if page_obj.has_next %}
-          <a href="?page={{ page_obj.next_page_number }}">siguiente</a>
-          <a href="?page={{ page_obj.paginator.num_pages }}">última &raquo;</a>
+          {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}">siguiente</a>
+            <a href="?page={{ page_obj.paginator.num_pages }}">última &raquo;</a>
+          {% endif %}
         {% endif %}
-      {% endif %}
-    </div>
-  {% endblock %}
+      </div>
+    {% endblock %}
   
 </body>
 </html>

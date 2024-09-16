@@ -3,16 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>index</title>
 </head>
 <body>
-    {% extends 'miaplicacion/padre.html' %}
-    {% load static %}  <!-- Añade esto aquí -->
-    {% block index %} 
-    <h> INDEX </h>
-    {% endblock index%}
+    {% extends "miaplicacion/padre.html" %}
 
-      
+    {% block content %}
+        <h1>Bienvenido a la Página de Inicio</h1>
+    {% endblock content %}
+    
 </body>
 </html>
 

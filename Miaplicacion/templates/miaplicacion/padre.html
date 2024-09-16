@@ -23,23 +23,25 @@
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
             <div class="container px-4 px-lg-5">
-                <a class="navbar-brand" href="#page-top">By creatiRed</a>
+                <a class="navbar-brand" href="{% url 'index' %}">Journey Cinefilo</a>
                 <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                     Menu
                     <i class="fas fa-bars"></i>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ms-auto">
-                        <li class="nav-item"><a class="nav-link" href="{% url 'about' %}">About</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#projects">Portafolio</a></li>
                         
-                        <li class="nav-item"><a class="nav-link" href="{% url 'blog_list' %}">Blogs</a></li>                        
+                        <li class="nav-item"><a class="nav-link" href="{% url 'about' %}">About</a></li>                         
+                        <li class="nav-item"><a class="nav-link" href="{% url 'blog_list' %}">Blogs</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'profile' %}">Profile</a></li>                        
                         <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">Iniciar Sesión</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{% url 'register' %}">Registrarse</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'register' %}">Registrarse</a></li>                     
+
                     </ul>
                 </div>
             </div>
         </nav>
+        {% block contenidoQueCambia %}
         <!-- Masthead-->
         <header class="masthead">
             <div class="container px-4 px-lg-5 d-flex h-100 align-items-center justify-content-center">
@@ -47,17 +49,14 @@
                     <div class="text-center">
                         <h1 class="mx-auto my-0 text-uppercase">Journey Cinefilo</h1>
                         <h2 class="text-white-50 mx-auto mt-2 mb-5">Descubriendo el Mundo del Cine. 🎬🚀</h2>
-                        <a class="btn btn-primary" href="{% url 'about' %}">Iniciar viaje!</a>
+                        <a class="btn btn-primary" href="{% url 'login' %}">Iniciar viaje!</a>
                     </div>
                 </div>
             </div>
-        </header>
-
-        {% block content %}
-        <h> NADA</h>
-        {% endblock content %}
-
+        </header>      
+        
         <!-- About-->
+        
         <section class="about-section text-center" id="about">
             <div class="container px-4 px-lg-5">
                 <div class="row gx-4 gx-lg-5 justify-content-center">
@@ -73,12 +72,13 @@
                 <img class="img-fluid" src="assets/img/ipad.png" alt="..." />
             </div>
         </section>
+       
         <!-- Projects-->
         <section class="projects-section bg-light" id="projects">
             <div class="container px-4 px-lg-5">
                 <!-- Featured Project Row-->
                 <div class="row gx-0 mb-4 mb-lg-5 align-items-center">
-                    <div class="col-xl-8 col-lg-7"><img class="img-fluid mb-3 mb-lg-0" src="assets/img/bg-masthead.jpg" alt="..." /></div>
+                    <div class="col-xl-8 col-lg-7"><img class="img-fluid mb-3 mb-lg-0" src="{% static 'miaplicacion/assets/img/bg-masthead.jpg' %}" alt="..." /></div>
                     <div class="col-xl-4 col-lg-5">
                         <div class="featured-text text-center text-lg-left">
                             <h4>Shoreline</h4>
@@ -88,7 +88,7 @@
                 </div>
                 <!-- Project One Row-->
                 <div class="row gx-0 mb-5 mb-lg-0 justify-content-center">
-                    <div class="col-lg-6"><img class="img-fluid" src="assets/img/demo-image-01.jpg" alt="..." /></div>
+                    <div class="col-lg-6"><img class="img-fluid" src="{% static 'miaplicacion/assets/img/demo-image-01.jpg' %}" alt="..." /></div>
                     <div class="col-lg-6">
                         <div class="bg-black text-center h-100 project">
                             <div class="d-flex h-100">
@@ -102,7 +102,7 @@
                 </div>
                 <!-- Project Two Row-->
                 <div class="row gx-0 justify-content-center">
-                    <div class="col-lg-6"><img class="img-fluid" src="assets/img/demo-image-02.jpg" alt="..." /></div>
+                    <div class="col-lg-6"><img class="img-fluid" src="{% static 'miaplicacion/assets/img/demo-image-02.jpg' %}" alt="..." /></div>
                     <div class="col-lg-6 order-lg-first">
                         <div class="bg-black text-center h-100 project">
                             <div class="d-flex h-100">
@@ -202,6 +202,9 @@
                 </div>
             </div>
         </section>
+
+        {% endblock %}
+
         <!-- Footer-->
         <footer class="footer bg-black small text-center text-white-50"><div class="container px-4 px-lg-5">Copyright &copy; Your Website 2023</div></footer>
         <!-- Bootstrap core JS-->

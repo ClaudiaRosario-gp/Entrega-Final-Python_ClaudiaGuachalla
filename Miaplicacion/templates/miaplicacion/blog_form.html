@@ -3,23 +3,28 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Editar Blog</title>
 </head>
 <body>
  
-  {% extends 'miaplicacion/padre.html' %}
-  {% load static %}
-  {% block content %}
-  <h1>{% if form.instance.pk %}Editar Blog{% else %}Crear Blog{% endif %}</h1>
+    {% extends "miaplicacion/padre.html" %}
+    {% load static %}
+    {% block contenidoQueCambia %}
+    <section class="projects-section bg-light" id="blog_detail">
+      <div class="container px-4 px-lg-5">
+          <div class="row gx-4 gx-lg-5 justify-content-center">
+              <div class="col-lg-8">
 
-  <form method="post" enctype="multipart/form-data">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">{% if form.instance.pk %}Actualizar{% else %}Crear{% endif %}</button>
-  </form>
+      <h1>{% if form.instance.pk %}Editar Blog{% else %}Crear Blog{% endif %}</h1>
 
-  <a href="{% url 'blog_list' %}">Volver al listado</a>
-  {% endblock %}
+      <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">{% if form.instance.pk %}Actualizar{% else %}Crear{% endif %}</button>
+      </form>
+
+      <a href="{% url 'blog_list' %}">Volver al listado</a>
+    {% endblock %}
 
 </body>
 </html>

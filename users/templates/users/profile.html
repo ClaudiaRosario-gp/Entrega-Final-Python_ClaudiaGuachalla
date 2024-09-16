@@ -1,20 +1,47 @@
-{% extends 'miaplicacion/padre.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+ 
+{% extends "miaplicacion/padre.html" %}
+{% load static %}
+{% block contenidoQueCambia %}
 
-{% block content %}
-  <div class="container">
-    <h2>Perfil de Usuario</h2>
-    <form method="POST" enctype="multipart/form-data">
-      {% csrf_token %}
-      <div class="row">
-        <div class="col-md-8">
-          {{ u_form.as_p }}
-          {{ p_form.as_p }}
-          <button type="submit" class="btn btn-primary">Actualizar</button>
-        </div>
-        <div class="col-md-4">
-          <img src="{{ user.profile.image.url }}" class="img-thumbnail" alt="Profile Image">
-        </div>
-      </div>
-    </form>
+<section class="about-section text-center" id="about">
+  <div class="container px-2 px-lg-3">
+      <div class="row gx-4 gx-lg-5 justify-content-center">
+          <div class="col-lg-8">
+              <h1 class="text-white mb-4">PERFIL DE USUARIO</h1>
+             
+              <div class="row gx-0 mb-5 mb-lg-0 justify-content-center">
+                <div class="col-lg-6"><img src="{{ request.user.profile.image.url }}" alt="Foto de perfil" class="img-thumbnail" style="width: 250px; height: auto;"></div>
+                <div class="col-lg-6">
+                    <div class="bg-black text-center h-100 project">
+                        <div class="d-flex h-100">
+                            <div class="project-text w-100 my-auto  text-lg-left">
+                                <h2 class="text-white">{{ user.first_name }} {{ user.last_name }}</h2>
+                                
+                                <p class="mb-0 text-white-50">Email: {{ request.user.email }}</p>
+                                <p class="mb-0 text-white-50">Descripción: {{ request.user.profile.description }}</p>
+                                <p class="mb-0 text-white-50">Sitio Web: <a href="{{ request.user.profile.website }}">{{ request.user.profile.website }}</a></p>
+                              </div>
+                        </div>
+                    </div>
+                </div>               
+            </div>
+             
+                          <a class="btn btn-primary" href="{% url 'edit_profile' %}">Editar perfil</a>
+                          <a class="btn btn-primary" href="{% url 'logout' %}">Cerrar sesión</a>
+    
   </div>
+</section>
 {% endblock %}
+
+
+</body>
+</html>
+

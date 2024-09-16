@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     'users',
 ]
 
+from django.contrib.messages import constants as messages
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -68,7 +69,7 @@ ROOT_URLCONF = 'blog_proyecto.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates'],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -80,6 +81,7 @@ TEMPLATES = [
         },
     },
 ]
+
 
 WSGI_APPLICATION = 'blog_proyecto.wsgi.application'
 
@@ -114,9 +116,9 @@ AUTH_PASSWORD_VALIDATORS = [
 
 # Internationalization
 
-LANGUAGE_CODE = 'es-es'
+LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/La_Paz'
 
 USE_I18N = True
 
@@ -125,10 +127,11 @@ USE_L10N = True
 USE_TZ = True
 
 
+
 # Static files (CSS, JavaScript, Images)
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'miaplicacion/static')]
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'Miaplicacion/static')]
 
 #STATIC_URL = '/static/'
 #STATIC_ROOT = BASE_DIR / 'staticfiles'
@@ -137,14 +140,10 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'miaplicacion/static')]
 #Archivos de medioss
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR / 'media'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-LOGIN_URL = '/accounts/login/'  # Ajusta según tu configuración
-LOGIN_REDIRECT_URL = '/blogs/'  # Ajusta según tu preferencia
+LOGIN_URL = '/users/login/'  
+LOGIN_REDIRECT_URL = '/blogs/'  
 
-#AUTH_USER_MODEL = 'users.User'
-
-
-# Default primary key field type
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

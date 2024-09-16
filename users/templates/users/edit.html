@@ -1,10 +1,28 @@
-{% extends 'miaplicacion/padre.html' %}
-
-{% block content %}
-    <h2>Editar Perfil</h2>
-    <form method="post" enctype="multipart/form-data">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit</title>
+</head>
+<body>
+    <form method="POST" enctype="multipart/form-data">
         {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Guardar cambios</button>
-    </form>
-{% endblock %}
+        <div class="row">
+          <div class="col-md-8">
+            {{ u_form.as_p }}
+            {{ p_form.as_p }}
+            <button type="submit" class="btn btn-primary">Actualizar</button>
+          </div>
+          <div class="col-md-4">
+            {% if user.profile.image %}
+              <img src="{{ user.profile.image.url }}" class="img-thumbnail" alt="Profile Image">
+            {% else %}
+              <img src="{% static 'path/to/default-image.jpg' %}" class="img-thumbnail" alt="Profile Image">
+            {% endif %}
+          </div>
+        </div>
+      </form>
+</body>
+</html>
+

@@ -1,12 +1,47 @@
-{% extends 'miaplicacion/padre.html' %}
-
-{% block content %}
-    <h2>Iniciar sesión</h2>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {% extends "miaplicacion/padre.html" %}
+    {% load static %}
+    {% block contenidoQueCambia %}
+    <section class="signup-section" id="signup">
+        <div class="container px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5">
+                <div class="col-md-10 col-lg-8 mx-auto text-center">
+                    <i class="far fa-paper-plane fa-2x mb-2 text-white"></i>
+                    <h1 class="text-white mb-5">Iniciar sesión</h1>
+    
+    
     <form method="post">
         {% csrf_token %}
         {{ form.as_p }}
-        <button type="submit">Ingresar</button>
+        <button type="submit" class="btn btn-primary">Ingresar</button>
+    </form>    
+
+
+        {% if messages %}
+            <div>
+            {% for message in messages %}
+                <div class="alert alert-{{ message.tags }}">
+                {{ message }}
+                </div>
+            {% endfor %}
+            </div>
+        {% endif %}
+
     </form>
+    
+
+
     <p>{{ msg_login }}</p>
-{% endblock %}
+    
+    {% endblock %}   
+</body>
+</html>
+
 

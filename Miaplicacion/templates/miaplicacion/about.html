@@ -1,29 +1,38 @@
-{% extends "miaplicacion/padre.html" %}
-{% load static %}
-
-
-{% block content %}
-<section class="about-section text-center" id="about">
-    <div class="container px-4 px-lg-5">
-        <div class="row gx-4 gx-lg-5 justify-content-center">
-            <div class="col-lg-8">
-                <h2 class="text-white mb-4">Acerca de Nosotros</h2>
-                <p class="text-white-50">
-                    Bienvenido a Mundo Cinefilo. Aquí podrás encontrar blogs interesantes sobre una variedad de temas del séptimo arte.
-                </p>
-                <h2 class="text-white mb-4">Sobre el Proyecto</h2>
-                <p class="text-white-50">    
-                    Este proyecto fue desarrollado como parte de una práctica para aprender Django.
-                </p>
-                <h2 class="text-white mb-4">Desarrolladores:</h2>
-                <p class="text-white-50">    
-                    By Claudia Rosario Guachalla Perez.
-                </p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About</title>
+</head>
+<body>
+    {% extends "miaplicacion/padre.html" %}
+    {% load static %}
+    {% block contenidoQueCambia %}
+    <section class="about-section text-center" id="about">
+        <div class="container px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+                <div class="col-lg-8">
+                    <h2 class="text-white mb-4">Acerca de Nosotros</h2>
+                    <p class="text-white-50">
+                        Bienvenido a Mundo Cinefilo. Aquí podrás encontrar blogs interesantes sobre una variedad de temas del séptimo arte.
+                    </p>
+                    <h2 class="text-white mb-4">Sobre el Proyecto</h2>
+                    <p class="text-white-50">    
+                        Este proyecto fue desarrollado como parte de una práctica para aprender Django.
+                    </p>
+                    <h2 class="text-white mb-4">Desarrolladores:</h2>
+                    <p class="text-white-50">    
+                        By Claudia Rosario Guachalla Perez.
+                    </p>
+                </div>
             </div>
+            <img class="img-fluid" src="{% static 'miaplicacion/assets/img/ipad.png' %}" alt="...">
+              
         </div>
-        <img class="img-fluid" src="{% static 'miaplicacion/assets/img/ipad.png' %}" alt="...">
-          
-    </div>
-</section>
-{% endblock %}
+    </section>
+    {% endblock %}   
+</body>
+</html>
+
 
