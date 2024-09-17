@@ -11,8 +11,8 @@
           {% if blog.imagen %}
             <img src="{{ blog.imagen.url }}" class="img-fluid w-100" style="object-fit: cover; max-height: 400px;" alt="Imagen del blog">
           {% endif %}
-          <div class="position-absolute top-0 start-0 w-100 h-100 d-flex flex-column justify-content-end p-5" style="background: rgba(0, 0, 0, 0.5);">
-            <div class="col-lg-15 ">
+          <div class="position-absolute top-0 start-0 w-100 h-100 d-flex flex-column justify-content-end p-4" style="background: rgba(0, 0, 0, 0.5);">
+            <div class="text-start">
               <h1 class="text-white mb-1">{{ blog.titulo }}</h1>
               <h2 class="text-white mb-1">{{ blog.subtitulo }}</h2>
               <p class="text-white mb-0"><strong>Autor:</strong> {{ blog.autor }}</p>
@@ -22,7 +22,7 @@
         </div>
 
         <!-- Cuerpo del Blog -->
-        <div class="col-lg-10 text-start">
+        <div class="col-lg-8 text-start">
           <p class="text-white-50 text-justify" style="line-height: 1.8; text-align: justify;">{{ blog.cuerpo }}</p>
         </div>
 
@@ -35,7 +35,7 @@
         </div>
 
         <!-- Botón para regresar a la lista de blogs -->
-        <div class="col-lg-8 mb-4">
+        <div class="col-lg-8 mb-4 text-start">
           <a href="{% url 'blog_list' %}" class="btn btn-secondary">Volver al listado</a>
         </div>
 
