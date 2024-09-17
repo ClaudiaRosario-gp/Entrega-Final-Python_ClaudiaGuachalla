@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Perfil de Usuario</title>
 </head>
 <body>
  
@@ -18,29 +18,34 @@
               <h1 class="text-white mb-4">PERFIL DE USUARIO</h1>
              
               <div class="row gx-0 mb-5 mb-lg-0 justify-content-center">
-                <div class="col-lg-6"><img src="{{ request.user.profile.image.url }}" alt="Foto de perfil" class="img-thumbnail" style="width: 250px; height: auto;"></div>
+                <div class="col-lg-6">
+                  <img src="{{ request.user.profile.image.url }}" alt="Foto de perfil" class="img-thumbnail" style="width: 250px; height: auto;">
+                </div>
                 <div class="col-lg-6">
                     <div class="bg-black text-center h-100 project">
                         <div class="d-flex h-100">
-                            <div class="project-text w-100 my-auto  text-lg-left">
-                                <h2 class="text-white">{{ user.first_name }} {{ user.last_name }}</h2>
+                            <div class="project-text w-100 my-auto text-lg-left">
+                                <h2 class="text-white">{{ request.user.first_name }} {{ request.user.last_name }}</h2>
                                 
-                                <p class="mb-0 text-white-50">Email: {{ request.user.email }}</p>
+                                <p class="mb-0 text-white-50">Correo electrónico: {{ request.user.email }}</p>
                                 <p class="mb-0 text-white-50">Descripción: {{ request.user.profile.description }}</p>
-                                <p class="mb-0 text-white-50">Sitio Web: <a href="{{ request.user.profile.website }}">{{ request.user.profile.website }}</a></p>
+                                <p class="mb-0 text-white-50">Sitio Web: 
+                                  <a href="{{ request.user.profile.website }}" target="_blank">
+                                    {{ request.user.profile.website }}
+                                  </a>
+                                </p>
                               </div>
                         </div>
                     </div>
                 </div>               
             </div>
              
-                          <a class="btn btn-primary" href="{% url 'edit_profile' %}">Editar perfil</a>
-                          <a class="btn btn-primary" href="{% url 'logout' %}">Cerrar sesión</a>
+            <a class="btn btn-primary" href="{% url 'edit_profile' %}">Editar perfil</a>
+            <a class="btn btn-danger" href="{% url 'logout' %}">Cerrar sesión</a>
     
   </div>
 </section>
 {% endblock %}
-
 
 </body>
 </html>
