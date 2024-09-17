@@ -15,3 +15,5 @@ Usuario de Prueba:
 Usuario: Claudia_gp
 Contraseña: J8WZKUZG7UAkHz
 
+Enlace al archivo de pruebas: 
+(https://docs.google.com/spreadsheets/d/1dKnxCYSuKmokOOyAt9HcI2zLwiYpaJLR/edit?usp=drive_link&ouid=114202600380555304271&rtpof=true&sd=true)
