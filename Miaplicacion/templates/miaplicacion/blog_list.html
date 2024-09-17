@@ -3,75 +3,59 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lista de Blogs</title>
-</head>
-<body>
- 
-    {% extends 'miaplicacion/padre.html' %}
-    {% load static %}
-    {% block contenidoQueCambia %}
-    
- 
-    <section class="about-section text-center" id="about">
-      <div class="container px-4 px-lg-5">
-          <div class="row gx-4 gx-lg-5 justify-content-center">
-                  <h1 class="text-white mb-4">LISTA DE BLOGS</h1>
-                    <section class="contact-section bg-black">
-                      <div class="container px-4 px-lg-5">
-                          <div class="row gx-4 gx-lg-5">
-                              
-                                  <div class="card py-4 h-100">
-                                      
-                                           
+  <title>Blogs</title>
+
+{% extends 'miaplicacion/padre.html' %}
+{% load static %}
+
+{% block contenidoQueCambia %}
+<section class="about-section text-center" id="about">
+  <div class="container px-4 px-lg-5">
+    <div class="row gx-4 gx-lg-5 justify-content-center">
+      <h1 class="text-white mb-4">LISTA DE BLOGS 🍿</h1>
+
+      <!-- Busqueda blog -->
+      <form method="GET" action="{% url 'blog_search' %}">
+        <input type="text" name="q" placeholder="Buscar blogs..." style="margin-bottom: 20px;">
+        <button type="submit">Buscar</button>
+      </form>
+
+      {% if query %}
+        <h2class="text-white>Resultados para "{{ query }}"</h2>
+      {% endif %}
+
+      <!-- Lista de blogs -->
       <div>
         {% for blog in blogs %}
           <div>
-            <!-- Mostrar imagen miniatura si existe -->
-            <h2>{{ blog.titulo }}</h2>
+            <h2 class="text-white mb-4">{{ blog.titulo }}</h2>
             {% if blog.imagen %}
-              <img src="{{ blog.imagen.url }}" alt="Imagen de {{ blog.titulo }}" style="width: 150px; height: auto;">
-
+              <img src="{{ blog.imagen.url }}" alt="Imagen de {{ blog.titulo }}" style="width: 150px; height: auto;"> 
             {% endif %}
-            
-            <p>{{ blog.subtitulo }}</p>
-            <p><strong>Fecha de publicación:</strong> {{ blog.fecha|date:"d M Y" }}</p>
+            <p class="text-justify text-white-50" style="line-height: 1.4; margin-bottom: 0.5rem;">{{ blog.subtitulo }}</p>
+            <p class="text-white-50"><strong>Fecha de publicación:</strong> {{ blog.fecha|date:"d M Y" }}</p>
             <a href="{% url 'blog_detail' blog.pk %}">Leer más</a>
-            
+
             {% if request.user == blog.autor %}
-            
               <a href="{% url 'blog_edit' blog.pk %}">Editar</a>
               <a href="{% url 'blog_delete' blog.pk %}">Eliminar</a>
-
             {% endif %}
           </div>
         {% empty %}
           <p>No hay blogs aún.</p>
-       {% endfor %}
-    </div>
-  
-    <!-- Agregar botón para crear un nuevo blog -->
-    {% if user.is_authenticated %}
-      <a href="{% url 'blog_create' %}">Crear nuevo blog</a>
-    {% endif %}
-  
-    <!-- Paginación -->
-    <div>
-      {% if is_paginated %}
-        <span>Página {{ page_obj.number }} de {{ page_obj.paginator.num_pages }}</span>
-  
-        {% if page_obj.has_previous %}
-          <a href="?page=1">&laquo; primera</a>
-          <a href="?page={{ page_obj.previous_page_number }}">anterior</a>
-        {% endif %}
-  
-          {% if page_obj.has_next %}
-            <a href="?page={{ page_obj.next_page_number }}">siguiente</a>
-            <a href="?page={{ page_obj.paginator.num_pages }}">última &raquo;</a>
-          {% endif %}
-        {% endif %}
+        {% endfor %}
       </div>
-    {% endblock %}
+
+      <!-- Agregar botón para crear un nuevo blog -->
+      {% if user.is_authenticated %}
+        <a href="{% url 'blog_create' %}" class="btn btn-primary">Crear nuevo blog</a>
+      {% endif %}
+
+     
+    </div>
+  </div>
+</section>
+{% endblock %}
+
   
-</body>
-</html>
 

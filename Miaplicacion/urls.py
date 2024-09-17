@@ -13,5 +13,6 @@ urlpatterns = [
     path('pages/<int:pk>/edit/', BlogEditView.as_view(), name='blog_edit'),  # Editar blog
     path('pages/<int:pk>/delete/', BlogDeleteView.as_view(), name='blog_delete'),  # Eliminar blog
     path('about/', AboutView.as_view(), name='about'),
-    path('pages/<int:pk>/guardar_comentario/', views.guardar_comentario, name='guardar_comentario'),    
+    path('pages/<int:pk>/guardar_comentario/', views.guardar_comentario, name='guardar_comentario'),
+    path('search/', views.blog_search, name='blog_search'),    
   ]

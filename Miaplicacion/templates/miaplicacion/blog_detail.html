@@ -1,12 +1,17 @@
     {% extends "miaplicacion/padre.html" %}
     {% load static %}
     {% block contenidoQueCambia %}
+
+    <section class="about-section text-center" id="about">
+        <div class="container px-4 px-lg-5">
+          <div class="row gx-4 gx-lg-5 justify-content-center">
+            
     
-    <h1>{{ blog.titulo }}</h1>
-    <h2>{{ blog.subtitulo }}</h2>
-    <p>{{ blog.cuerpo }}</p>
-    <p><strong>Autor:</strong> {{ blog.autor }}</p>
-    <p><strong>Fecha de publicación:</strong> {{ blog.fecha|date:"d M Y" }}</p>
+    <h1 class="text-white mb-4">{{ blog.titulo }}</h1>
+    <h2 class="text-white mb-4">{{ blog.subtitulo }}</h2>
+    <p class="text-justify text-start text-white-50">{{ blog.cuerpo }}</p>
+    <p class="text-white mb-4"><strong>Autor:</strong> {{ blog.autor }}</p>
+    <p class="text-white mb-4"><strong>Fecha de publicación:</strong> {{ blog.fecha|date:"d M Y" }}</p>
 
     {% if blog.imagen %}
       <img src="{{ blog.imagen.url }}" alt="Imagen del blog">
@@ -19,37 +24,36 @@
 
     <a href="{% url 'blog_list' %}">Volver al listado</a>
 
-    <h2>Comentarios</h2>
+    <h2 class="text-white mb-4">Comentarios</h2>
 
     {% if comentarios %}
         <ul>
             {% for comentario in comentarios %}
-                <li>
-                    <strong>{{ comentario.nombre }}</strong>: {{ comentario.cuerpo }}
+                <li class="text-justify text-start text-white-50">
+                    <strong>{{ comentario.nombre }}</strong>: {{ comentario.cuerpo }} 
                 </li>
             {% endfor %}
         </ul>
     {% else %}
-        <p>No hay comentarios aún.</p>
+        <p class="text-white mb-4">No hay comentarios aún.</p>
     {% endif %}
 
-    <h2>Comentarios</h2>
-    <h3>Deja un comentario</h3>
+    <h3 class="text-white mb-4">Deja un comentario</h3>
 
     <!-- Formulario para enviar comentario -->
     
-  <form method="POST" action="{% url 'blog_detail' blog.pk %}">
-      {% csrf_token %}
-      <p>
+    <form method="POST" action="{% url 'blog_detail' blog.pk %}">
+        {% csrf_token %}
+        <p class="text-white mb-4">
           <label for="id_nombre">Nombre:</label>
           <input type="text" name="nombre" maxlength="100" required id="id_nombre">
-      </p>
-      <p>
+        </p>
+        <p class="text-white mb-4">
           <label for="id_cuerpo">Comentario:</label>
           <textarea name="cuerpo" rows="4" required id="id_cuerpo"></textarea>
-      </p>
-      <button type="submit">Enviar</button>
-  </form>
+        </p>
+        <button type="submit">Enviar</button>
+      </form>
   
   
     {% endblock %}

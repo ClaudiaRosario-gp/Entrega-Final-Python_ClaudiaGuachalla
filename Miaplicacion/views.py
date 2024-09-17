@@ -5,6 +5,16 @@ from django.views.generic import ListView, DetailView, CreateView, DeleteView, U
 from .models import Blog, Comentario
 from .forms import ComentarioForm
 from django.views.generic.edit import FormMixin
+from django.db.models import Q
+from .models import Blog  
+
+def blog_search(request):
+    query = request.GET.get('q')
+    results = Blog.objects.filter(
+        Q(titulo__icontains=query) | Q(cuerpo__icontains=query) | Q(autor__username__icontains=query)
+    ) if query else Blog.objects.all()
+    
+    return render(request, 'Miaplicacion/blog_list.html', {'blogs': results, 'query': query})
 
 def index(request):
     return render(request, 'Miaplicacion/index.html')  
