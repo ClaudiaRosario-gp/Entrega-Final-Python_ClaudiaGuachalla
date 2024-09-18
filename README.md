@@ -17,3 +17,6 @@ Contraseña: J8WZKUZG7UAkHz
 
 Enlace al archivo de pruebas: 
 (https://docs.google.com/spreadsheets/d/1dKnxCYSuKmokOOyAt9HcI2zLwiYpaJLR/edit?usp=drive_link&ouid=114202600380555304271&rtpof=true&sd=true)
+
+Enlace al video de pruebas:
+https://drive.google.com/file/d/1AV0ldvdszx_x7fl-sr-9_ipMpkPTGjSf/view?usp=drive_link
