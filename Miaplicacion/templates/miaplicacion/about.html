@@ -1,14 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About</title>
-</head>
-<body>
+
     {% extends "miaplicacion/padre.html" %}
     {% load static %}
     {% block contenidoQueCambia %}
+    
     <section class="about-section text-center" id="about">
         <div class="container px-4 px-lg-5">
             <div class="row gx-4 gx-lg-5 justify-content-center">
@@ -25,14 +19,13 @@
                     <p class="text-white-50">    
                         Claudia Rosario Guachalla Perez.
                     </p>
+                    <img class="img-fluid" src="{% static 'miaplicacion/assets/img/about.png' %}" alt="...">
                 </div>
             </div>
-            <img class="img-fluid" src="{% static 'miaplicacion/assets/img/about.png' %}" alt="...">
+            
               
         </div>
     </section>
     {% endblock %}   
-</body>
-</html>
 
 

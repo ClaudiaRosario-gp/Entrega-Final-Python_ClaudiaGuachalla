@@ -1,27 +1,51 @@
 {% extends "miaplicacion/padre.html" %}
 {% load static %}
 {% block contenidoQueCambia %}
-<section class="projects-section bg-light" id="projects"></section>
-  <div class="container px-4 px-lg-5">
-    <div class="row gx-4 gx-lg-5 justify-content-center"></div>
-    <h1>EDITAR PERFIL</h1>
 
-  <form method="POST" enctype="multipart/form-data">
-    {% csrf_token %}
-    <div class="row">
-      <div class="col-md-8">
-        {{ u_form.as_p }}
-        {{ p_form.as_p }}
-        <button type="submit" class="btn btn-primary">Actualizar</button>
-      </div>
-      <div class="col-md-4">
-        {% if user.profile.image %}
-          <img src="{{ user.profile.image.url }}" class="img-thumbnail" alt="Profile Image">
-        {% else %}
-          <img src="{% static 'path/to/default-image.jpg' %}" class="img-thumbnail" alt="Profile Image">
-        {% endif %}
+<section class="about-section text-center" id="about"></section>
+<section class="projects-section bg-light py-5" id="projects">
+  <div class="container px-4 px-lg-5">
+    <div class="row gx-4 gx-lg-5 justify-content-center mb-4">
+      <div class="col-lg-8 text-center">
+        <h1 class="display-4">EDITAR PERFIL 🦹‍♂️</h1>
+        <p class="lead">Actualiza tus datos y personaliza tu perfil</p>
       </div>
     </div>
-  </form>
-</div>
+
+    <form method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+      <div class="row gx-4 gx-lg-5">
+        <!-- Formulario de Usuario -->
+        <div class="col-md-8">
+          <div class="card mb-4">
+            <div class="card-body">
+              <h5 class="card-title">Información Personal</h5>
+              {{ u_form.as_p }}
+              {{ p_form.as_p }}
+              <button type="submit" class="btn btn-primary btn-lg mt-3 w-100">Actualizar Perfil</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Imagen de Perfil -->
+        <div class="col-md-4 text-center">
+          <div class="card mb-4">
+            <div class="card-body">
+              <h5 class="card-title">Imagen de Perfil</h5>
+              <div class="profile-img-container mb-3">
+                {% if user.profile.image %}
+                  <img src="{{ user.profile.image.url }}" class="img-thumbnail rounded-circle mb-3" style="width: 200px; height: 200px;" alt="Imagen de perfil">
+                {% else %}
+                  <img src="{% static 'path/to/default-image.jpg' %}" class="img-thumbnail rounded-circle mb-3" style="width: 200px; height: 200px;" alt="Imagen de perfil">
+                {% endif %}
+              </div>
+              <p class="text-muted">Sube una nueva imagen para actualizar tu perfil.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</section>
+
 {% endblock %}

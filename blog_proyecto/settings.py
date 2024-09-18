@@ -51,6 +51,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'Miaplicacion',
     'users',
+    'messages_app',
+    
 ]
 
 from django.contrib.messages import constants as messages

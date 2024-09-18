@@ -23,7 +23,7 @@
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
             <div class="container px-4 px-lg-5">
-                <a class="navbar-brand" href="{% url 'index' %}">Journey Cinefilo</a>
+                <a class="navbar-brand" href="{% url 'index' %}">INICIO</a>
                 <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                     Menu
                     <i class="fas fa-bars"></i>
@@ -33,7 +33,10 @@
                         
                         <li class="nav-item"><a class="nav-link" href="{% url 'about' %}">About</a></li>                         
                         <li class="nav-item"><a class="nav-link" href="{% url 'blog_list' %}">Blogs</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{% url 'profile' %}">Profile</a></li>                        
+                        <li class="nav-item"><a class="nav-link" href="{% url 'profile' %}">Profile</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'inbox' %}">Mensajes</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'send_message' %}">Enviar Mensaje</a></li>
+                        
 
                         
                         {% if request.user.is_authenticated %}

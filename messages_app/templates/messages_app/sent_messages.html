@@ -1,0 +1,19 @@
+{% extends "miaplicacion/padre.html" %}
+{% block contenidoQueCambia %}
+<section class="about-section text-center" id="about">
+    <div class="container px-4 px-lg-5">
+      <div class="row gx-4 gx-lg-5 justify-content-center">
+
+<h1 class="text-white justify-content-center">Mensajes Enviados</h1>
+<ul>
+    {% for message in messages %}
+    <li>
+        <strong>Para: {{ message.recipient }}</strong> - {{ message.subject }}
+        <p class="text-white mb-4">{{ message.body|truncatewords:20 }}</p>
+        <small>{{ message.timestamp }}</small>
+    </li>
+    {% empty %}
+    <li class="text-white mb-4">No has enviado mensajes aún.</li>
+    {% endfor %}
+</ul>
+{% endblock %}

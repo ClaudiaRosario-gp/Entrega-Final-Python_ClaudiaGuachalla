@@ -1,0 +1,14 @@
+{% extends "miaplicacion/padre.html" %}
+{% block contenidoQueCambia %}
+<section class="about-section text-center" id="about"></section>
+<section class="projects-section bg-light py-5" id="projects">
+    <div class="container px-4 px-lg-5">
+      <div class="row gx-4 gx-lg-5 justify-content-center">
+
+<h1 class="display-4">Enviar Mensaje 📨</h1>
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-primary">Enviar</button>
+</form>
+{% endblock %}

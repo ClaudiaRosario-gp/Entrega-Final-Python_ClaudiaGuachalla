@@ -72,7 +72,9 @@ def edit_profile(request):
         p_form = ProfileUpdateForm(request.POST, request.FILES, instance=request.user.profile)
 
         if u_form.is_valid() and p_form.is_valid():
+            # Guarda los datos del usuario (incluyendo la nueva contraseña si se proporciona)
             u_form.save()
+            # Guarda los datos del perfil
             p_form.save()
             messages.success(request, '¡Tu perfil ha sido actualizado!')
             return redirect('profile')
@@ -84,7 +86,7 @@ def edit_profile(request):
         'u_form': u_form,
         'p_form': p_form
     }
-    return render(request, 'users/profile_update.html', {'u_form': u_form, 'p_form': p_form})
+    return render(request, 'users/profile_update.html', context)
 
 # Vista para cerrar sesión
 class LogoutView(View):
